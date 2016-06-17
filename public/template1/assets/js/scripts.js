@@ -1,0 +1,35 @@
+
+jQuery(document).ready(function () {
+
+    /*
+     Fullscreen background
+     */
+    $.backstretch("public/template1/assets/img/backgrounds/1.jpg");
+
+    /*
+     Form validation
+     */
+    $('.login-form input[type="text"], .login-form input[type="password"], .login-form textarea').on('focus', function () {
+        $(this).removeClass('input-error');
+        $('.login-form input[type="text"], .login-form input[type="password"]').popover('hide');
+    });
+
+    $('.login-form input[type="text"], .login-form input[type="password"], .login-form textarea').on('click', function () {
+        e.preventDefault();
+    });
+
+    $('.login-form').on('submit', function (e) {
+        $(this).find('input[type="text"], input[type="password"], textarea').each(function () {
+            if ($(this).val() == "") {
+                e.preventDefault();
+                $(this).addClass('input-error');
+                $(this).popover('show');
+            } else {
+                $(this).removeClass('input-error');
+            }
+        });
+
+    });
+
+
+});
